@@ -1,0 +1,34 @@
+<ion-view title="Login" id="page6" style="background:#4CAF50;" hide-nav-bar="true">
+  <ion-content padding="true" class="has-header">
+    <div>
+      <img src="img/mGmomBIETZuDdIhoylhQ_logo_200.png" style="display: block; width: 35%; height: auto; margin-left: auto; margin-right: auto;">
+    </div>
+    <div class="spacer" style="height: 30px;"></div>
+    <form id="login-form1" class="list" ng-submit="vm.submitLogin()">
+      <ion-list id="login-list1">
+        <label class="item item-input" id="login-input1">
+          <span class="input-label">Usuário</span>
+          <input type="text" placeholder="" ng-model="vm.user.username">
+        </label>
+        <label class="item item-input" id="login-input2">
+          <span class="input-label">Senha</span>
+          <input type="password" placeholder="" ng-model="vm.user.password">
+        </label>
+      </ion-list>
+      <button type="submit" id="login-button1" class="button button-light button-clear button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">ENTRAR</button>
+      <div class="spacer" style="height: 10px;"></div>
+      <div id="login-markdown1" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;">Não tem uma conta ainda?
+          <a href="#" style="text-decoration: none; color: #fff;"><strong>Crie agora!</strong></a>
+        </p>
+      </div>
+      <div id="login-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;">
+          <strong>OU</strong>
+        </p>
+      </div>
+      <div class="spacer" style="height: 1px;"></div>
+      <button id="login-button2" style="color: #fff;background-color: #388E3C;font-weight:500;" class="button button-light  button-block button-clear icon-left ion-social-facebook" ng-click="vm.loginFacebook()">ENTRAR COM FACEBOOK</button>
+    </form>
+  </ion-content>
+</ion-view>
