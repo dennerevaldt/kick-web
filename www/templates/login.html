@@ -17,9 +17,9 @@
       </ion-list>
       <button type="submit" id="login-button1" class="button button-light button-clear button-block" style="color: #fff;background-color: #388E3C;font-weight:500;" ng-click="vm.submitCreate()">ENTRAR</button>
       <div class="spacer" style="height: 10px;"></div>
-      <div id="login-markdown1" style="text-align:center;" class="show-list-numbers-and-dots">
+      <div id="login-markdown1" style="text-align:center;" class="show-list-numbers-and-dots" ng-controller="CreateProfileController as vm">
         <p style="color:#FFFFFF;">Não tem uma conta ainda?
-          <a href="#" style="text-decoration: none; color: #fff;"><strong>Crie agora!</strong></a>
+          <a href="#" style="text-decoration: none; color: #fff;" ng-click="vm.modal.show()"><strong>Crie agora!</strong></a>
         </p>
       </div>
       <div id="login-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">

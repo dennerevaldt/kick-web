@@ -32,12 +32,12 @@
           var deferred = $q.defer();
           var promise = $http.post(settings.url_service+'/token', entity)
             .then(
-            function (response) {
-              deferred.resolve(response);
-            },
-            function (err) {
-              deferred.reject(err);
-            }
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
             );
           return deferred.promise;
         }
@@ -77,7 +77,7 @@
           return deferred.promise;
         }
 
-        function clearCredentials () {    
+        function clearCredentials () {
           localStorage.removeItem('kickCredentials');
           localStorage.removeItem('kickUserCredentials');
           $http.defaults.headers['x-access-token'] = '';

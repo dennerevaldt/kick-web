@@ -1,0 +1,55 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar bar-header bar-stable custom-bar">
+    <h1 class="title">Criar conta</h1>
+    <button class="button button-clear button-primary" ng-click="vm.modal.hide()">
+      <span style="color: #fff;">Fechar</span>
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-header padding">
+    <form id="createProfileSearch-form" ng-submit="vm.createAccount()">
+      <label class="item item-select" id="novaConta-select1" name="typeAccount">
+        <span class="input-label">Tipo da conta</span>
+        <select ng-model="vm.user.typeaccount">
+          <option value="1">Jogador</option>
+          <option value="2">Empresa</option>
+        </select>
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input3">
+        <span class="input-label">Nome</span>
+        <input type="text" placeholder="" ng-model="vm.user.fullname">
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input6">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="" ng-model="vm.user.email">
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input4">
+        <span class="input-label">Usuário</span>
+        <input type="text" placeholder="" ng-model="vm.user.username">
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input5">
+        <span class="input-label">Senha</span>
+        <input type="password" placeholder="" ng-model="vm.user.password">
+      </label>
+      <div class="spacer" style="height: 10px;" ng-if="vm.user.typeaccount === '2'"></div>
+      <label class="item item-input" id="novaConta-input7" ng-if="vm.user.typeaccount === '2'">
+        <span class="input-label">Telefone</span>
+        <input type="text" placeholder="" ng-model="vm.user.telephone">
+      </label>
+      <div class="spacer" style="height: 10px;" ng-if="vm.user.typeaccount === '1'"></div>
+      <label class="item item-input" id="novaConta-input8" ng-if="vm.user.typeaccount === '1'">
+        <span class="input-label">Posição de jogo</span>
+        <input type="text" placeholder="" ng-model="vm.user.position">
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input9">
+        <span class="input-label">Pesquise sua cidade/estado</span>
+        <input type="text" placeholder="" ng-model="vm.user.search" ng-change="vm.search()">
+      </label>
+      <button type="submit" id="novaConta-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Cadastrar</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

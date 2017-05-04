@@ -7,7 +7,8 @@ angular
     return {
       'version': '1.0.0',
       'url_service': 'https://kickapi.herokuapp.com',
-      'url_fb': 'https://graph.facebook.com/v2.6'
+      'url_fb': 'https://graph.facebook.com/v2.6',
+      'url_google_places': 'https://maps.googleapis.com/maps/api/place'
     };
   }
 
