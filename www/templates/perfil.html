@@ -1,3 +1,9 @@
-<ion-view title="Perfil" id="page5">
-  <ion-content padding="true" class="has-header"></ion-content>
+<ion-view title="Perfil" id="page5" cache-view="false">
+  <ion-content padding="true" class="has-header">
+    <h3 id="perfil-heading1" style="color:#000000;text-align:center;margin-top: 50%;">{{vm.user.fullname || 'Não informado'}}</h3>
+    <div id="perfil-markdown3" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">{{vm.user.email || 'Não informado'}}</p>
+    </div>
+    <button id="perfil-button3" class="button button-positive  button-block" style="color: #fff;background-color: #388E3C;font-weight:500;" ng-click="vm.logout()">Sair</button>
+  </ion-content>
 </ion-view>

@@ -15,6 +15,21 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.custom-bar {
+  background-color: #4CAF50 !important; }
+
+.bar.bar-stable .title {
+  color: #FFF !important; }
+
+.empty-list {
+  text-align: center;
+  color: #ccc; }
+
+.empty-list span {
+  font-size: 50px;
+  padding: 0;
+  margin: 0; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9814,7 +9829,3 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
-
-.button > .button-kick {
-  color: #fff;
-  background-color: #388E3C; }

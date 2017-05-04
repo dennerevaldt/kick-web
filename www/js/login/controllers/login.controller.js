@@ -68,14 +68,13 @@
               });
 
           }, function(error) {
-              $cordovaToast
-                .show('Usuário não encontrado, verifique e tente novamente', 'long', 'center');
-              console.log(error);
+            if(error !== "The sign in flow was canceled")
+              $cordovaToast.show('Usuário não encontrado, verifique e tente novamente', 'long', 'center');
           });
         }
 
         function submitCreate() {
-
+          
         }
 
         function loadOn() {

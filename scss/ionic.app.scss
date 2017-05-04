@@ -15,13 +15,27 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+.custom-bar{
+  background-color:#4CAF50 !important; // for bg color
+}
+
+.bar.bar-stable .title {
+  color: #FFF !important;
+}
+
+.empty-list {
+  text-align: center;
+  color: #ccc;
+}
+
+.empty-list span {
+  font-size: 50px;
+  padding: 0;
+  margin: 0;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
-.button > .button-kick {
-  color: #fff;
-  background-color: #388E3C;
-}

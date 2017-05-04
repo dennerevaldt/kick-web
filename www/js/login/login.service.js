@@ -77,10 +77,10 @@
           return deferred.promise;
         }
 
-        function clearCredentials () {
+        function clearCredentials () {    
           localStorage.removeItem('kickCredentials');
           localStorage.removeItem('kickUserCredentials');
-          delete $http.defaults.headers['x-access-token'];
+          $http.defaults.headers['x-access-token'] = '';
         }
 
         function getDataFB(access_token) {

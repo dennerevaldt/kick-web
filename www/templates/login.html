@@ -1,4 +1,4 @@
-<ion-view title="Login" id="page6" style="background:#4CAF50;" hide-nav-bar="true">
+<ion-view title="Login" id="page6" style="background:#4CAF50;" hide-nav-bar="true" cache-view="false">
   <ion-content padding="true" class="has-header">
     <div>
       <img src="img/mGmomBIETZuDdIhoylhQ_logo_200.png" style="display: block; width: 35%; height: auto; margin-left: auto; margin-right: auto;">
@@ -15,7 +15,7 @@
           <input type="password" placeholder="" ng-model="vm.user.password">
         </label>
       </ion-list>
-      <button type="submit" id="login-button1" class="button button-light button-clear button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">ENTRAR</button>
+      <button type="submit" id="login-button1" class="button button-light button-clear button-block" style="color: #fff;background-color: #388E3C;font-weight:500;" ng-click="vm.submitCreate()">ENTRAR</button>
       <div class="spacer" style="height: 10px;"></div>
       <div id="login-markdown1" style="text-align:center;" class="show-list-numbers-and-dots">
         <p style="color:#FFFFFF;">Não tem uma conta ainda?
@@ -28,7 +28,7 @@
         </p>
       </div>
       <div class="spacer" style="height: 1px;"></div>
-      <button id="login-button2" style="color: #fff;background-color: #388E3C;font-weight:500;" class="button button-light  button-block button-clear icon-left ion-social-facebook" ng-click="vm.loginFacebook()">ENTRAR COM FACEBOOK</button>
+      <button type="button" id="login-button2" style="color: #fff;background-color: #388E3C;font-weight:500;" class="button button-light  button-block button-clear icon-left ion-social-facebook" ng-click="vm.loginFacebook()">ENTRAR COM FACEBOOK</button>
     </form>
   </ion-content>
 </ion-view>
