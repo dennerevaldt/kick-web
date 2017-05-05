@@ -34,6 +34,16 @@ $dark:                            #444 !default;
   margin: 0;
 }
 
+.list-ac {
+  list-style-type: none;
+}
+
+.list-ac li {
+  padding: 10px;
+  background-color: #ddd;
+  border-bottom: 1px solid #bbb;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

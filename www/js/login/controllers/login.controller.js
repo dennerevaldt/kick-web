@@ -28,14 +28,26 @@
             return;
           }
           LoginService.token(vm.user.username.toLowerCase(), vm.user.password)
-            .then(function(resp){
-              if(resp.data.token) {
+            .then(LoginService.setCredentials)
+            .then(LoginService.getUserData)
+            .then(LoginService.setUserData)
+            .then(function(response) {
 
+              if (response.data.Person.typeperson === 'E') {
+                // redirect enterprise dash
+                console.log('EMPRESA >>>');
+                $state.go('enterpriseController.quadras');
+              } else {
+                // redirect player dash
+                console.log('JOGADOR >>>');
+                // $state.go('playerController.jogos');
               }
+
+              $ionicLoading.hide();
             }, function(err){
               $ionicLoading.hide();
               $cordovaToast
-                .show('Usuário não encontrado, verifique e tente novamente', 'long', 'center');
+                .show('Usuário ou senha incorretos, verifique e tente novamente', 'long', 'center');
             });
         }
 
@@ -57,7 +69,7 @@
                 } else {
                   // redirect player dash
                   console.log('JOGADOR >>>');
-                  $state.go('playerController.jogos');
+                  // $state.go('playerController.jogos');
                 }
 
                 $ionicLoading.hide();
@@ -74,7 +86,7 @@
         }
 
         function submitCreate() {
-          
+
         }
 
         function loadOn() {

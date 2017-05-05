@@ -12,25 +12,50 @@
         var accounts = [];
 
         var service = {
-            createAccount: createAccount,
-            token: token,
-            tokenFacebook: tokenFacebook,
-            setCredentials: setCredentials,
-            clearCredentials: clearCredentials,
-            getDataFB: getDataFB,
-            getUserData: getUserData,
-            setUserData: setUserData
+          createAccountEnterprise: createAccountEnterprise,
+          createAccountPlayer: createAccountPlayer,
+          token: token,
+          tokenFacebook: tokenFacebook,
+          setCredentials: setCredentials,
+          clearCredentials: clearCredentials,
+          getDataFB: getDataFB,
+          getUserData: getUserData,
+          setUserData: setUserData
         };
 
         return service;
 
-        function createAccount() {
+        function createAccountEnterprise(entity) {
+          var deferred = $q.defer();
+          var promise = $http.post(settings.url_service + '/enterprise', entity)
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
+        }
 
+        function createAccountPlayer(entity) {
+          var deferred = $q.defer();
+          var promise = $http.post(settings.url_service + '/player', entity)
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
         }
 
         function token(username, password) {
           var deferred = $q.defer();
-          var promise = $http.post(settings.url_service+'/token', entity)
+          var promise = $http.post(settings.url_service + '/token', {username: username, password: password})
             .then(
               function (response) {
                 deferred.resolve(response);
@@ -44,7 +69,7 @@
 
         function tokenFacebook(entity) {
           var deferred = $q.defer();
-          var promise = $http.post(settings.url_service+'/token-facebook', {email: entity.data.email, password: entity.data.id})
+          var promise = $http.post(settings.url_service + '/token-facebook', {email: entity.data.email, password: entity.data.id})
             .then(
               function (response) {
                 deferred.resolve(response);

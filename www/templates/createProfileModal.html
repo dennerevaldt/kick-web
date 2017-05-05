@@ -16,39 +16,35 @@
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input3">
-        <span class="input-label">Nome</span>
-        <input type="text" placeholder="" ng-model="vm.user.fullname">
+        <input type="text" placeholder="Nome" ng-model="vm.user.fullname">
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input6">
-        <span class="input-label">Email</span>
-        <input type="email" placeholder="" ng-model="vm.user.email">
+        <input type="email" placeholder="Email" ng-model="vm.user.email">
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input4">
-        <span class="input-label">Usuário</span>
-        <input type="text" placeholder="" ng-model="vm.user.username">
+        <input type="text" placeholder="Usuário" ng-model="vm.user.username">
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input5">
-        <span class="input-label">Senha</span>
-        <input type="password" placeholder="" ng-model="vm.user.password">
+        <input type="password" placeholder="Senha" ng-model="vm.user.password">
       </label>
       <div class="spacer" style="height: 10px;" ng-if="vm.user.typeaccount === '2'"></div>
       <label class="item item-input" id="novaConta-input7" ng-if="vm.user.typeaccount === '2'">
-        <span class="input-label">Telefone</span>
-        <input type="text" placeholder="" ng-model="vm.user.telephone">
+        <input type="text" placeholder="Telefone" ng-model="vm.user.telephone" ui-br-phone-number>
       </label>
       <div class="spacer" style="height: 10px;" ng-if="vm.user.typeaccount === '1'"></div>
       <label class="item item-input" id="novaConta-input8" ng-if="vm.user.typeaccount === '1'">
-        <span class="input-label">Posição de jogo</span>
-        <input type="text" placeholder="" ng-model="vm.user.position">
+        <input type="text" placeholder="Posição de jogo" ng-model="vm.user.position">
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input9">
-        <span class="input-label">Pesquise sua cidade/estado</span>
-        <input type="text" placeholder="" ng-model="vm.user.search" ng-change="vm.search()">
+        <input type="text" placeholder="Pesquise sua cidade/estado" ng-model="vm.user.search" ng-model-options="{debounce:300}" ng-change="vm.search()">
       </label>
+      <ul class="list-ac" ng-show="vm.listCities.length">
+        <li ng-repeat="item in vm.listCities" ng-click="vm.setCitie(item)">{{item.description}}</li>
+      </ul>
       <button type="submit" id="novaConta-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Cadastrar</button>
     </form>
   </ion-content>
