@@ -6,7 +6,7 @@
     </button>
   </ion-header-bar>
   <ion-content class="has-header padding">
-    <form id="createProfileSearch-form" ng-submit="vm.createAccount()">
+    <form id="createProfileSearch-form" name="vm.form" ng-submit="vm.createAccount()">
       <label class="item item-select" id="novaConta-select1" name="typeAccount">
         <span class="input-label">Tipo da conta</span>
         <select ng-model="vm.user.typeaccount">
@@ -16,31 +16,31 @@
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input3">
-        <input type="text" placeholder="Nome" ng-model="vm.user.fullname">
+        <input type="text" placeholder="Nome" ng-model="vm.user.fullname" required>
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input6">
-        <input type="email" placeholder="Email" ng-model="vm.user.email">
+        <input type="email" placeholder="Email" ng-model="vm.user.email" required>
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input4">
-        <input type="text" placeholder="Usuário" ng-model="vm.user.username">
+        <input type="text" placeholder="Usuário" ng-model="vm.user.username" required>
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input5">
-        <input type="password" placeholder="Senha" ng-model="vm.user.password">
+        <input type="password" placeholder="Senha" ng-model="vm.user.password" required>
       </label>
       <div class="spacer" style="height: 10px;" ng-if="vm.user.typeaccount === '2'"></div>
       <label class="item item-input" id="novaConta-input7" ng-if="vm.user.typeaccount === '2'">
-        <input type="text" placeholder="Telefone" ng-model="vm.user.telephone" ui-br-phone-number>
+        <input type="text" placeholder="Telefone" ng-model="vm.user.telephone" ui-br-phone-number required>
       </label>
       <div class="spacer" style="height: 10px;" ng-if="vm.user.typeaccount === '1'"></div>
       <label class="item item-input" id="novaConta-input8" ng-if="vm.user.typeaccount === '1'">
-        <input type="text" placeholder="Posição de jogo" ng-model="vm.user.position">
+        <input type="text" placeholder="Posição de jogo" ng-model="vm.user.position" required>
       </label>
       <div class="spacer" style="height: 10px;"></div>
       <label class="item item-input" id="novaConta-input9">
-        <input type="text" placeholder="Pesquise sua cidade/estado" ng-model="vm.user.search" ng-model-options="{debounce:300}" ng-change="vm.search()">
+        <input type="text" placeholder="Pesquise sua cidade/estado" ng-model="vm.user.search" ng-model-options="{debounce:300}" ng-change="vm.search()" required>
       </label>
       <ul class="list-ac" ng-show="vm.listCities.length">
         <li ng-repeat="item in vm.listCities" ng-click="vm.setCitie(item)">{{item.description}}</li>

@@ -14,7 +14,6 @@
         vm.userCreate = {};
         vm.submitLogin = submitLogin;
         vm.loginFacebook = loginFacebook;
-        vm.submitCreate = submitCreate;
         vm.userLogged = {};
 
         //////////////
@@ -35,11 +34,9 @@
 
               if (response.data.Person.typeperson === 'E') {
                 // redirect enterprise dash
-                console.log('EMPRESA >>>');
                 $state.go('enterpriseController.quadras');
               } else {
                 // redirect player dash
-                console.log('JOGADOR >>>');
                 // $state.go('playerController.jogos');
               }
 
@@ -64,11 +61,9 @@
 
                 if (response.data.Person.typeperson === 'E') {
                   // redirect enterprise dash
-                  console.log('EMPRESA >>>');
                   $state.go('enterpriseController.quadras');
                 } else {
                   // redirect player dash
-                  console.log('JOGADOR >>>');
                   // $state.go('playerController.jogos');
                 }
 
@@ -83,10 +78,6 @@
             if(error !== "The sign in flow was canceled")
               $cordovaToast.show('Usuário não encontrado, verifique e tente novamente', 'long', 'center');
           });
-        }
-
-        function submitCreate() {
-
         }
 
         function loadOn() {

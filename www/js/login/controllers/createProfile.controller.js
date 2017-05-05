@@ -5,12 +5,13 @@
         .module('app.login')
         .controller('CreateProfileController', CreateProfileController);
 
-    CreateProfileController.$inject = ['$ionicModal', '$scope', 'PlaceApiService', 'LoginService', '$ionicLoading'];
+    CreateProfileController.$inject = ['$ionicModal', '$scope', 'PlaceApiService', 'LoginService', '$ionicLoading', '$cordovaToast', '$state'];
 
     /* @ngInject */
-    function CreateProfileController($ionicModal, $scope, PlaceApiService, LoginService, $ionicLoading) {
+    function CreateProfileController($ionicModal, $scope, PlaceApiService, LoginService, $ionicLoading, $cordovaToast, $state) {
         var vm = this;
         vm.user = {};
+        vm.form = {};
         vm.user.typeaccount = '1';
         vm.search = search;
         vm.listCities = [];
@@ -31,7 +32,8 @@
             .then(function (response) {
               vm.listCities = response;
             }, function (error) {
-              console.log('ERRO >>', JSON.stringify(error.data));
+              $cordovaToast
+                .show('Erro ao buscar cidades', 'long', 'center');
             });
         }
 
@@ -46,6 +48,11 @@
         }
 
         function createAccount() {
+          if (vm.form.$invalid) {
+            $cordovaToast
+              .show('Preencha os campos corretamente', 'long', 'center');
+            return;
+          }
           loadOn();
           if (vm.user.typeaccount === '1') {
             // player
@@ -58,12 +65,28 @@
           } else {
             // enterprise
             LoginService.createAccountEnterprise(vm.user)
-              .then(function (response) {
+              .then(function(response){
+                return LoginService.token(vm.user.username, vm.user.password);
+              })
+              .then(LoginService.setCredentials)
+              .then(LoginService.getUserData)
+              .then(LoginService.setUserData)
+              .then(function(response) {
+                if (response.data.Person.typeperson === 'E') {
+                  // redirect enterprise dash
+                  vm.modal.hide();
+                  $state.go('enterpriseController.quadras');
+                } else {
+                  // redirect player dash
+                  // vm.modal.hide();
+                  // $state.go('playerController.jogos');
+                }
+
                 $ionicLoading.hide();
-                console.log('CREATE ENT >>>', JSON.stringify(response));
-              }, function (err) {
+              }, function(err){
                 $ionicLoading.hide();
-                console.log('ERRO CREATE ENT >>>', JSON.stringify(err));
+                $cordovaToast
+                  .show(err.data.error[0].message || 'Confira todos os campos', 'long', 'center');
               });
           }
         }
