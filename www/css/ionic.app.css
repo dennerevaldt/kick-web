@@ -18,6 +18,9 @@ $dark:                            #444 !default;
 .custom-bar {
   background-color: #4CAF50 !important; }
 
+.custom-button {
+  background-color: #4CAF50 !important; }
+
 .bar.bar-stable .title {
   color: #FFF !important; }
 
