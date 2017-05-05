@@ -31,13 +31,12 @@
             .then(LoginService.getUserData)
             .then(LoginService.setUserData)
             .then(function(response) {
-
               if (response.data.Person.typeperson === 'E') {
                 // redirect enterprise dash
                 $state.go('enterpriseController.quadras');
               } else {
                 // redirect player dash
-                // $state.go('playerController.jogos');
+                $state.go('playerController.jogos');
               }
 
               $ionicLoading.hide();
@@ -64,7 +63,7 @@
                   $state.go('enterpriseController.quadras');
                 } else {
                   // redirect player dash
-                  // $state.go('playerController.jogos');
+                  $state.go('playerController.jogos');
                 }
 
                 $ionicLoading.hide();

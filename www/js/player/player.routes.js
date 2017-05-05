@@ -13,16 +13,16 @@ angular.module('app.player')
     views: {
       'tab3': {
         templateUrl: 'templates/notificacoes.html',
-        controller: 'NotificationEntepriseController',
+        controller: 'NotificationPlayerController',
         controllerAs: 'vm'
       }
     }
   })
 
-  .state('playerController.games', {
+  .state('playerController.jogos', {
     url: '/player-game',
     views: {
-      'tab2': {
+      'tab1': {
         templateUrl: 'templates/jogos.html',
         controller: 'GameController',
         controllerAs: 'vm'
@@ -33,7 +33,7 @@ angular.module('app.player')
   .state('playerController.jogosProximos', {
     url: '/player-game-near',
     views: {
-      'tab1': {
+      'tab2': {
         templateUrl: 'templates/jogosProximos.html',
         controller: 'GameNearController',
         controllerAs: 'vm'

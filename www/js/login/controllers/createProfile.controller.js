@@ -57,11 +57,22 @@
           if (vm.user.typeaccount === '1') {
             // player
             LoginService.createAccountPlayer(vm.user)
-              .then(function (response) {
-                $ionicLoading.hide();
-              }, function (err) {
-                $ionicLoading.hide();
-              });
+            .then(function(response){
+              return LoginService.token(vm.user.username, vm.user.password);
+            })
+            .then(LoginService.setCredentials)
+            .then(LoginService.getUserData)
+            .then(LoginService.setUserData)
+            .then(function(response) {
+              // redirect player dash
+              vm.modal.hide();
+              $state.go('playerController.jogos');
+              $ionicLoading.hide();
+            }, function(err){
+              $ionicLoading.hide();
+              $cordovaToast
+                .show(err.data.error[0].message || 'Confira todos os campos', 'long', 'center');
+            });
           } else {
             // enterprise
             LoginService.createAccountEnterprise(vm.user)
@@ -72,16 +83,9 @@
               .then(LoginService.getUserData)
               .then(LoginService.setUserData)
               .then(function(response) {
-                if (response.data.Person.typeperson === 'E') {
-                  // redirect enterprise dash
-                  vm.modal.hide();
-                  $state.go('enterpriseController.quadras');
-                } else {
-                  // redirect player dash
-                  // vm.modal.hide();
-                  // $state.go('playerController.jogos');
-                }
-
+                // redirect enterprise dash
+                vm.modal.hide();
+                $state.go('enterpriseController.quadras');
                 $ionicLoading.hide();
               }, function(err){
                 $ionicLoading.hide();
