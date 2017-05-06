@@ -1,0 +1,42 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar bar-header bar-stable custom-bar">
+    <h1 class="title">Confirmar conta</h1>
+    <button class="button button-clear button-primary" ng-click="vm.modal.hide()">
+      <span style="color: #fff;">Cancelar</span>
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-header padding">
+    <form id="createProfileSearch-form" name="vm.form" ng-submit="vm.createAccount()">
+      <div style="text-align: justify;">
+        <h4 style="color: #4CAF50;">Olá {{vm.userConfirm.fullname}}, seu cadastro está quase concluído! Informe somente mais alguns campos para finalizar.</h4>
+      </div>
+      <label class="item item-select" id="novaConta-select1" name="typeAccount">
+        <span class="input-label">Tipo da conta</span>
+        <select ng-model="vm.userConfirm.typeaccount">
+          <option value="1">Jogador</option>
+          <option value="2">Empresa</option>
+        </select>
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input4">
+        <input type="text" placeholder="Usuário" ng-model="vm.userConfirm.username" required>
+      </label>
+      <div class="spacer" style="height: 10px;" ng-if="vm.userConfirm.typeaccount === '2'"></div>
+      <label class="item item-input" id="novaConta-input7" ng-if="vm.userConfirm.typeaccount === '2'">
+        <input type="text" placeholder="Telefone" ng-model="vm.userConfirm.telephone" ui-br-phone-number required>
+      </label>
+      <div class="spacer" style="height: 10px;" ng-if="vm.userConfirm.typeaccount === '1'"></div>
+      <label class="item item-input" id="novaConta-input8" ng-if="vm.userConfirm.typeaccount === '1'">
+        <input type="text" placeholder="Posição de jogo" ng-model="vm.userConfirm.position" required>
+      </label>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaConta-input9">
+        <input type="text" placeholder="Pesquise sua cidade/estado" ng-model="vm.userConfirm.search" ng-model-options="{debounce:300}" ng-change="vm.search()" required>
+      </label>
+      <ul class="list-ac" ng-show="vm.listCities.length">
+        <li ng-repeat="item in vm.listCities" ng-click="vm.setCitie(item)">{{item.description}}</li>
+      </ul>
+      <button type="submit" id="novaConta-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Confirmar</button>
+    </form>
+  </ion-content>
+</ion-modal-view>
