@@ -1,12 +1,24 @@
 <ion-view title="Quadras" id="page4" hide-back-button="true" cache-view="false">
   <ion-nav-buttons side="right" class="has-header">
-    <a href="" class="button button-positive custom-button icon ion-android-add"></a>
+    <a href="" ng-click="vm.addCourt()" class="button button-positive custom-button icon ion-android-add"></a>
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
-    <ion-list id="quadras-list3">
-      <ion-item class="item-avatar" id="quadras-list-item8">
-        <h2>Item</h2>
+
+    <ion-list id="quadras-list3" ng-if="vm.listCourts.length">
+      <ion-item class="item-avatar" id="quadras-list-item8" ng-repeat="item in vm.listCourts" ng-click="vm.editCourtItem(item)">
+        <img ng-src="{{item.category === 'Futebol society (7)' ? 'img/icon_society.png' : 'img/icon_futsal.png'}}" alt="img">
+        <h2 ng-bind="item.name"></h2>
+        <p ng-bind="item.category"></p>
+        <ion-option-button class="button-assertive" ng-click="vm.removeCourt(item)">Excluir</ion-option-button>
       </ion-item>
     </ion-list>
+
+    <div class="empty-list" ng-if="!vm.listCourts.length">
+      <div style="margin-top: 58%;">
+        <span class="icon ion-ios-football"></span>
+        <div>Nenhuma quadra encontrada</div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

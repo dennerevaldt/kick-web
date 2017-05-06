@@ -25,7 +25,21 @@ angular.module('app.enterprise')
       'tab2': {
         templateUrl: 'templates/horarios.html',
         controller: 'ScheduleController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          InitListSchedules: function(EnterpriseService, $ionicLoading) {
+            $ionicLoading.show({
+              animation: 'fade-in',
+              showBackdrop: true,
+              maxWidth: 200
+            });
+            return EnterpriseService.getSchedules()
+              .then(function(response) {
+                $ionicLoading.hide();
+                return response;
+              });
+          }
+        }
       }
     }
   })
@@ -36,7 +50,21 @@ angular.module('app.enterprise')
       'tab1': {
         templateUrl: 'templates/quadras.html',
         controller: 'CourtController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          InitListCourts: function(EnterpriseService, $ionicLoading) {
+            $ionicLoading.show({
+              animation: 'fade-in',
+              showBackdrop: true,
+              maxWidth: 200
+            });
+            return EnterpriseService.getCourts()
+              .then(function(response) {
+                $ionicLoading.hide();
+                return response;
+              });
+          }
+        }
       }
     }
   })

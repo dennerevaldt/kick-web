@@ -1,0 +1,27 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar bar-header bar-stable custom-bar">
+    <h1 class="title">Nova quadra</h1>
+    <button class="button button-clear button-primary" ng-click="vm.modal.hide()">
+      <span style="color: #fff;">Cancelar</span>
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-header padding">
+    <form id="createCourt-form" name="vm.formCourt" ng-submit="vm.createCourt()">
+
+      <label class="item item-select" id="novaQuadra-select1" name="typeCourt">
+        <span class="input-label">Categoria</span>
+        <select ng-model="vm.court.type">
+          <option value="1">Futebol society (7)</option>
+          <option value="2">Futebol de salão (Futsal)</option>
+        </select>
+      </label>
+      
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaQuadra-input4">
+        <input type="text" placeholder="Nome" ng-model="vm.court.name" required>
+      </label>
+
+      <button type="submit" id="novaQuadra-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Cadastrar</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

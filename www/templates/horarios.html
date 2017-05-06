@@ -3,10 +3,23 @@
     <a href="" class="button button-positive custom-button icon ion-android-add"></a>
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header">
-    <ion-list id="horarios-list3">
-      <ion-item class="item-avatar" id="horarios-list-item">
-        <h2>Item</h2>
+
+    <ion-list id="horarios-list3" ng-if="vm.listSchedules.length">
+      <ion-item class="item-avatar" id="horarios-list-item" ng-repeat="item in vm.listSchedules" ng-click="vm.editScheduleItem(item)">
+        <img ng-src="{{item.Court.category === 'Futebol society (7)' ? 'img/icon_society.png' : 'img/icon_futsal.png'}}" alt="img">
+        <h2 ng-bind="item.date | date:'dd/MM/yyyy'"></h2>
+        <p ng-bind="item.horary"></p>
+        <p ng-bind="item.Court.category"></p>
+        <ion-option-button class="button-assertive" ng-click="vm.removeSchedule(item)">Excluir</ion-option-button>
       </ion-item>
     </ion-list>
+
+    <div class="empty-list" ng-if="!vm.listSchedules.length">
+      <div style="margin-top: 58%;">
+        <span class="icon ion-android-stopwatch"></span>
+        <div>Nenhum horário encontrado</div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

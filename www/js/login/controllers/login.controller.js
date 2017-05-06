@@ -52,7 +52,6 @@
                 // redirect player dash
                 $state.go('playerController.jogos');
               }
-
               $ionicLoading.hide();
             }, function(err){
               $ionicLoading.hide();
