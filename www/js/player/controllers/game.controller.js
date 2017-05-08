@@ -56,13 +56,13 @@
                 }, function(err) {
                   $ionicLoading.hide();
                   $cordovaToast
-                    .show('Problemas ao buscar jogos próximos, tente novamente', 'long', 'center');
+                    .show('Problemas ao buscar empresas próximas, verifique sua conexão e tente novamente', 'long', 'center');
                 });
             }, function(err) {
               // error
               $ionicLoading.hide();
               $cordovaToast
-                .show('Problemas ao buscar jogos, tente novamente', 'long', 'center');
+                .show('Problemas ao buscar empresas próximas, verifique se sua localização está ativa e tente novamente', 'long', 'center');
             });
         }
 
