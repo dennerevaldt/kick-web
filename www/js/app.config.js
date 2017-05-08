@@ -27,7 +27,7 @@ function run($rootScope, $ionicPlatform, $state) {
           $state.go('enterpriseController.quadras');
         } else {
           // redirect player dash
-          // $state.go('playerController.jogos');
+          $state.go('playerController.jogos');
         }
       }
 

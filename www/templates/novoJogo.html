@@ -1,0 +1,42 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar bar-header bar-stable custom-bar">
+    <h1 class="title">Novo jogo</h1>
+    <button class="button button-clear button-primary" ng-click="vm.modal.hide()">
+      <span style="color: #fff;">Cancelar</span>
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-header padding">
+    <form id="createGame-form" name="vm.formGame" ng-submit="vm.createGame()">
+
+      <label class="item item-input" id="novaJogo-input4">
+        <input type="text" placeholder="Nome" ng-model="vm.game.name" required>
+      </label>
+
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-select" id="novaJogo-select1" name="typeGame">
+        <span class="input-label">Empresas</span>
+        <select ng-model="vm.game.enterprise_id" ng-change="vm.getAllSchedulesByEntepriseId()">
+          <option value="{{item.id}}" ng-repeat="item in vm.listEnterprises">
+            <p>{{item.Person.fullname}} - </p>
+            <p>{{item.Person.district}} - </p>
+            <p>Telefone - {{item.telephone}}</p>
+          </option>
+        </select>
+      </label>
+
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-select" id="novaJogo-select1" name="typeGame">
+        <span class="input-label">Horários</span>
+        <select ng-model="vm.game.schedule_id" ng-disabled="!vm.listSchedules.length">
+          <option value="{{item.id}}" ng-repeat="item in vm.listSchedules">
+            <p>{{item.date | date:'dd/MM/yyyy'}} - </p>
+            <p>{{item.horary}} - </p>
+            <p>{{item.Court.category}}</p>
+          </option>
+        </select>
+      </label>
+
+      <button type="submit" id="novaJogo-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Cadastrar</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

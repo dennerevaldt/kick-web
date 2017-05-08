@@ -18,6 +18,8 @@
           createSchedule: createSchedule,
           removeSchedule: removeSchedule,
           editSchedule: editSchedule,
+          getAllProximity: getAllProximity,
+          getAllSchedulesByEntepriseId: getAllSchedulesByEntepriseId,
           findWithAttr: findWithAttr
         };
 
@@ -124,6 +126,34 @@
         function editSchedule(entity) {
           var deferred = $q.defer();
           var promise = $http.put(settings.url_service + '/schedule/' + entity.id, entity)
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
+        }
+
+        function getAllProximity(entity) {
+          var deferred = $q.defer();
+          var promise = $http.post(settings.url_service + '/enterprise/proximity', entity)
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
+        }
+
+        function getAllSchedulesByEntepriseId(id) {
+          var deferred = $q.defer();
+          var promise = $http.get(settings.url_service + '/schedule/enterprise/'+id)
             .then(
               function (response) {
                 deferred.resolve(response);

@@ -25,7 +25,21 @@ angular.module('app.player')
       'tab1': {
         templateUrl: 'templates/jogos.html',
         controller: 'GameController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        resolve: {
+          InitListGames: function(PlayerService, $ionicLoading) {
+            $ionicLoading.show({
+              animation: 'fade-in',
+              showBackdrop: true,
+              maxWidth: 200
+            });
+            return PlayerService.getGames()
+              .then(function(response) {
+                $ionicLoading.hide();
+                return response;
+              });
+          }
+        }
       }
     }
   })
