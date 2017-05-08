@@ -15,6 +15,9 @@
           removeCourt: removeCourt,
           editCourt: editCourt,
           getSchedules: getSchedules,
+          createSchedule: createSchedule,
+          removeSchedule: removeSchedule,
+          editSchedule: editSchedule,
           findWithAttr: findWithAttr
         };
 
@@ -79,6 +82,48 @@
         function getSchedules() {
           var deferred = $q.defer();
           var promise = $http.get(settings.url_service + '/schedule')
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
+        }
+
+        function createSchedule(entity) {
+          var deferred = $q.defer();
+          var promise = $http.post(settings.url_service + '/schedule', entity)
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
+        }
+
+        function removeSchedule(entity) {
+          var deferred = $q.defer();
+          var promise = $http.delete(settings.url_service + '/schedule/' + entity.id)
+            .then(
+              function (response) {
+                deferred.resolve(response);
+              },
+              function (err) {
+                deferred.reject(err);
+              }
+            );
+          return deferred.promise;
+        }
+
+        function editSchedule(entity) {
+          var deferred = $q.defer();
+          var promise = $http.put(settings.url_service + '/schedule/' + entity.id, entity)
             .then(
               function (response) {
                 deferred.resolve(response);

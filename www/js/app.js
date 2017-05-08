@@ -5,10 +5,35 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'ngCordova', 'ngCordovaOauth', 'app.routes', 'app.login', 'app.enterprise', 'app.player', 'ui.utils.masks'])
+angular.module('app', ['ionic', 'ngCordova', 'ngCordovaOauth', 'app.routes', 'app.login', 'app.enterprise', 'app.player', 'ui.utils.masks', 'ionic-datepicker', 'ionic-timepicker'])
 
-.config(function($ionicConfigProvider, $sceDelegateProvider){
+.config(function($ionicConfigProvider, $sceDelegateProvider, ionicDatePickerProvider, ionicTimePickerProvider){
 
+  var datePickerObj = {
+    inputDate: new Date(),
+    titleLabel: 'Selecionar',
+    setLabel: 'Ok',
+    todayLabel: 'Hoje',
+    closeLabel: 'Fechar',
+    mondayFirst: false,
+    weeksList: ["D", "S", "T", "Q", "Q", "S", "S"],
+    monthsList: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+    templateType: 'popup',
+    showTodayButton: false,
+    dateFormat: 'dd/MM/yyyy',
+    closeOnSelect: true,
+    disableWeekdays: []
+  };
+  ionicDatePickerProvider.configDatePicker(datePickerObj);
+
+  var timePickerObj = {
+    inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
+    format: 12,
+    step: 1,
+    setLabel: 'Selecionar',
+    closeLabel: 'Fechar'
+  };
+  ionicTimePickerProvider.configTimePicker(timePickerObj);
 
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
 

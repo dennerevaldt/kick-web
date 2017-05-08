@@ -1,0 +1,27 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar bar-header bar-stable custom-bar">
+    <h1 class="title">Editar horário</h1>
+    <button class="button button-clear button-primary" ng-click="vm.modalEdit.hide()">
+      <span style="color: #fff;">Cancelar</span>
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-header padding">
+    <form id="editSchedule-form" name="vm.formSchedule" ng-submit="vm.editSchedule()">
+
+      <!-- <label class="item item-select" id="editarQuadra-select1" name="typeSchedule">
+        <span class="input-label">Categoria</span>
+        <select ng-model="vm.schedule.type">
+          <option value="1">Futebol society (7)</option>
+          <option value="2">Futebol de salão (Futsal)</option>
+        </select>
+      </label> -->
+
+      <!-- <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="editarQuadra-input4">
+        <input type="text" placeholder="Nome" ng-model="vm.schedule.name" required>
+      </label> -->
+
+      <button type="submit" id="editarQuadra-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Salvar</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -23,6 +23,31 @@ $dark:                            #444 !default;
   background-color:#4CAF50 !important; // for bg color
 }
 
+.ionic_datepicker_popup .popup-body .selected_date_full,
+.ionic_datepicker_popup .popup-buttons button,
+.ionic_datepicker_popup .selected_date,
+.ionic_timepicker_popup .heading,
+.ionic_timepicker_popup .button_set,
+.ionic_timepicker_popup .button_close {
+  background-color:#4CAF50 !important; // for bg color
+}
+
+.ionic_datepicker_popup .today {
+  border: 1px solid #4CAF50;
+}
+
+.ionic_datepicker_popup .popup-body .button-clear {
+  color:#4CAF50 !important; // for color
+}
+
+.ionic_datepicker_popup .popup-body .month_select, .ionic_datepicker_popup .popup-body .year_select {
+  border-bottom: 1px solid #4CAF50;
+}
+
+.ionic_datepicker_popup .popup-body .month_select:after, .ionic_datepicker_popup .popup-body .year_select:after {
+  color:#4CAF50 !important; // for color
+}
+
 .bar.bar-stable .title {
   color: #FFF !important;
 }

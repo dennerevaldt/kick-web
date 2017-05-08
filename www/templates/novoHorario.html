@@ -1,0 +1,28 @@
+<ion-modal-view cache-view="false">
+  <ion-header-bar class="bar bar-header bar-stable custom-bar">
+    <h1 class="title">Nova horário</h1>
+    <button class="button button-clear button-primary" ng-click="vm.modal.hide()">
+      <span style="color: #fff;">Cancelar</span>
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-header padding">
+    <form id="createSchedule-form" name="vm.formSchedule" ng-submit="vm.createSchedule()">
+      <label class="item item-input" id="novaHorario-input4">
+        <input type="text" placeholder="Selecione uma data" ng-model="vm.schedule.displayDate" ng-readonly="true" ng-click="vm.openDatePicker()" required>
+      </label>
+
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaHorario-input5">
+        <input type="text" placeholder="Seleciona uma hora" ng-model="vm.schedule.horary" ng-readonly="true" ng-click="vm.openTimePicker()" required>
+      </label>
+
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-select" id="novaHorario-select1" name="typeSchedule">
+        <span class="input-label">Quadra</span>
+        <select ng-model="vm.schedule.court_id" ng-options="item.id as item.name for item in vm.listCourts track by item.id">
+        </select>
+      </label>
+      <button type="submit" id="novaHorario-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Cadastrar</button>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -7,6 +7,8 @@
   "dependencies": {
     "ngCordova": "^0.1.27-alpha",
     "ng-cordova-oauth": "^0.3.0",
-    "angular-input-masks": "^2.5.0"
+    "angular-input-masks": "^2.5.0",
+    "ionic-datepicker": "^1.2.1",
+    "ionic-timepicker": "^0.6.0"
   }
 }
