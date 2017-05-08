@@ -49,6 +49,10 @@
                 .then(function(response) {
                   vm.listEnterprises = response.data;
                   $ionicLoading.hide();
+                  if (!vm.listEnterprises.length) {
+                    $cordovaToast
+                      .show('Não foi possível encontrar empresas próximas :(', 'long', 'center');
+                  }
                 }, function(err) {
                   $ionicLoading.hide();
                   $cordovaToast
