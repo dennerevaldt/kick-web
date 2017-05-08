@@ -19,10 +19,6 @@
         vm.createGame = createGame;
         vm.removeGame = removeGame;
 
-        var posOptions = {timeout: 10000, enableHighAccuracy: false};
-
-        console.log('LISTA JOGOS >>', JSON.stringify(vm.listGames));
-
         ///////////////
 
         $ionicModal.fromTemplateUrl('templates/novoJogo.html', {
@@ -39,6 +35,7 @@
             showBackdrop: true,
             maxWidth: 200
           });
+          var posOptions = {timeout: 10000, enableHighAccuracy: false};
           $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
