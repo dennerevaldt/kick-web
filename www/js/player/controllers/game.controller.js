@@ -47,7 +47,6 @@
 
               EnterpriseService.getAllProximity(cord)
                 .then(function(response) {
-                  console.log('DISTRICT >>>>', JSON.stringify(response.data));
                   vm.listEnterprises = response.data;
                   $ionicLoading.hide();
                 }, function(err) {
