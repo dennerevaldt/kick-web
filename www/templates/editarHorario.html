@@ -7,19 +7,22 @@
   </ion-header-bar>
   <ion-content class="has-header padding">
     <form id="editSchedule-form" name="vm.formSchedule" ng-submit="vm.editSchedule()">
+      <label class="item item-input" id="novaHorario-input4">
+        <input type="text" placeholder="Selecione uma data" ng-model="vm.schedule.displayDate" ng-readonly="true" ng-click="vm.openDatePicker()" required>
+      </label>
 
-      <!-- <label class="item item-select" id="editarQuadra-select1" name="typeSchedule">
-        <span class="input-label">Categoria</span>
-        <select ng-model="vm.schedule.type">
-          <option value="1">Futebol society (7)</option>
-          <option value="2">Futebol de salão (Futsal)</option>
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-input" id="novaHorario-input5">
+        <input type="text" placeholder="Seleciona uma hora" ng-model="vm.schedule.horary" ng-readonly="true" ng-click="vm.openTimePicker()" required>
+      </label>
+
+      <div class="spacer" style="height: 10px;"></div>
+      <label class="item item-select" id="novaHorario-select1" name="typeSchedule">
+        <span class="input-label">Quadra</span>
+        <select ng-model="vm.schedule.court_id" ng-options="item.id as item.name for item in vm.listCourts">
+          <option value="" ng-disabled="true">Selecione uma quadra</option>
         </select>
-      </label> -->
-
-      <!-- <div class="spacer" style="height: 10px;"></div>
-      <label class="item item-input" id="editarQuadra-input4">
-        <input type="text" placeholder="Nome" ng-model="vm.schedule.name" required>
-      </label> -->
+      </label>
 
       <button type="submit" id="editarQuadra-button4" class="button button-balanced button-block" style="color: #fff;background-color: #388E3C;font-weight:500;">Salvar</button>
     </form>

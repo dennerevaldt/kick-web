@@ -114,10 +114,26 @@
       }
 
       function editScheduleItem(item) {
-        indexEdit = vm.listSchedules.indexOf(item);
-        vm.schedule = item;
-        vm.schedule.type = item.category === 'Futebol society (7)' ? '1' : '2';
-        vm.modalEdit.show();
+        $ionicLoading.show({
+          animation: 'fade-in',
+          showBackdrop: true,
+          maxWidth: 200
+        });
+        EnterpriseService.getCourts()
+          .then(function(response) {
+            $ionicLoading.hide();
+            vm.listCourts = response.data;
+            if(vm.listCourts.length) {
+              indexEdit = vm.listSchedules.indexOf(item);
+              vm.schedule = item;
+              var dt = new Date(item.date);
+              vm.schedule.displayDate = $filter('date')(dt, 'dd/MM/yyyy');
+              vm.modalEdit.show();
+            } else {
+              $cordovaToast
+                .show('Atenção, cadastre antes ao menos uma quadra', 'long', 'center');
+            }
+          });
       }
 
       function editSchedule() {
@@ -127,8 +143,9 @@
           maxWidth: 200
         });
         EnterpriseService.editSchedule(vm.schedule)
+          .then(EnterpriseService.getSchedules)
           .then(function(response) {
-            vm.listSchedules[indexEdit] = vm.schedule;
+            vm.listSchedules = response.data;
             vm.modalEdit.hide();
             $ionicLoading.hide();
           }, function(err) {
@@ -144,7 +161,6 @@
             var nDate = new Date(val);
             vm.schedule.date = $filter('date')(nDate, 'yyyy/MM/dd');
             vm.schedule.displayDate = $filter('date')(nDate, 'dd/MM/yyyy');
-
           },
           inputDate: new Date() //Optional
         };
