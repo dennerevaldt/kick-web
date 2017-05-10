@@ -9,7 +9,7 @@
         <img ng-src="{{item.Court.category === 'Futebol society (7)' ? 'img/icon_society.png' : 'img/icon_futsal.png'}}" alt="img">
         <h2 ng-bind="item.date | date:'dd/MM/yyyy'"></h2>
         <p ng-bind="item.horary"></p>
-        <p ng-bind="item.Court.category"></p>
+        <p ng-bind="item.Court.name"></p>
         <ion-option-button class="button-assertive" ng-click="vm.removeSchedule(item)">Excluir</ion-option-button>
       </ion-item>
     </ion-list>

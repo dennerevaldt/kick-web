@@ -71,6 +71,8 @@
           return;
         }
 
+        var schedule = angular.copy(vm.schedule);
+
         EnterpriseService.createSchedule(vm.schedule)
           .then(function(response) {
             vm.schedule.Court = vm.listCourts.filter(function(item){return item.id === vm.schedule.court_id})[0];
