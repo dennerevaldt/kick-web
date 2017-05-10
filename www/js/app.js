@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'ngCordova', 'ngCordovaOauth', 'app.routes', 'app.login', 'app.enterprise', 'app.player', 'ui.utils.masks', 'ionic-datepicker', 'ionic-timepicker'])
+angular.module('app', ['ionic', 'ngCordova', 'ngCordovaOauth', 'app.routes', 'app.login', 'app.enterprise', 'app.player', 'ui.utils.masks', 'ionic-datepicker', 'ionic-timepicker', 'angularMoment'])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider, ionicDatePickerProvider, ionicTimePickerProvider){
 

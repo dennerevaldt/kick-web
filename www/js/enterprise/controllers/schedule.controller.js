@@ -5,10 +5,10 @@
         .module('app.enterprise')
         .controller('ScheduleController', ScheduleController);
 
-    ScheduleController.$inject = ['InitListSchedules', '$ionicModal', '$scope', '$cordovaToast', '$ionicLoading', 'EnterpriseService', '$ionicPopup', 'ionicDatePicker', 'ionicTimePicker', '$filter'];
+    ScheduleController.$inject = ['InitListSchedules', '$ionicModal', '$scope', '$cordovaToast', '$ionicLoading', 'EnterpriseService', '$ionicPopup', 'ionicDatePicker', 'ionicTimePicker', '$filter', 'moment'];
 
     /* @ngInject */
-    function ScheduleController(InitListSchedules, $ionicModal, $scope, $cordovaToast, $ionicLoading, EnterpriseService, $ionicPopup, ionicDatePicker, ionicTimePicker, $filter) {
+    function ScheduleController(InitListSchedules, $ionicModal, $scope, $cordovaToast, $ionicLoading, EnterpriseService, $ionicPopup, ionicDatePicker, ionicTimePicker, $filter, moment) {
       var vm = this;
       vm.listSchedules = InitListSchedules.data || [];
       vm.schedule = {};
@@ -72,8 +72,10 @@
         }
 
         var schedule = angular.copy(vm.schedule);
+        var mom = moment(schedule.date).add(1, 'days');
+        schedule.date = mom.format('YYYY/MM/DD');
 
-        EnterpriseService.createSchedule(vm.schedule)
+        EnterpriseService.createSchedule(schedule)
           .then(function(response) {
             vm.schedule.Court = vm.listCourts.filter(function(item){return item.id === vm.schedule.court_id})[0];
             vm.schedule.date = vm.schedule.displayDate;
@@ -144,7 +146,12 @@
           showBackdrop: true,
           maxWidth: 200
         });
-        EnterpriseService.editSchedule(vm.schedule)
+
+        var schedule = angular.copy(vm.schedule);
+        var mom = moment(schedule.date).add(1, 'days');
+        schedule.date = mom.format('YYYY/MM/DD');
+
+        EnterpriseService.editSchedule(schedule)
           .then(EnterpriseService.getSchedules)
           .then(function(response) {
             vm.listSchedules = response.data;
