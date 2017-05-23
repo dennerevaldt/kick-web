@@ -21,6 +21,9 @@ $dark:                            #444 !default;
 .custom-button {
   background-color: #4CAF50 !important; }
 
+.custom-fb {
+  background-color: #3b5998 !important; }
+
 .ionic_datepicker_popup .popup-body .selected_date_full,
 .ionic_datepicker_popup .popup-buttons button,
 .ionic_datepicker_popup .selected_date,

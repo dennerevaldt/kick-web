@@ -112,6 +112,7 @@
         }
 
         function setCitie(item) {
+          vm.userConfirm.district = item.description;
           vm.userConfirm.search = item.description;
           vm.listCities = [];
           PlaceApiService.getLatLngCitie(item.place_id)
